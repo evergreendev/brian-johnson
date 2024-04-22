@@ -1,21 +1,14 @@
 import Image from "next/image";
 import voight from "@/public/voight.jpg";
-import logo from "@/public/logo.png";
+import flag from "@/public/american-flag.jpg";
 import Link from "next/link";
+import logo from "@/public/logo.png";
+import Nav from "@/app/components/Nav";
 
 export default function Home() {
     return (
         <main className="flex flex-col items-center justify-between text-cream-500 bg-green-500">
-            <div className="bg-green-500 shadow-md w-full flex justify-between">
-                <div
-                    className="z-10 text-cream-500 font-body w-full max-w-screen-2xl mx-auto items-center justify-between text-xl lg:flex ">
-                    <Link href="/">
-                        <Image className="w-32" src={logo} alt="Vote Voight"/>
-                    </Link>
-                    <Link className="hover:text-orange1-500" href="/platform">Platform</Link>
-                </div>
-
-            </div>
+            <Nav/>
             <div className="flex w-full flex-col relative">
                 <Image src={voight} alt=""/>
                 <div className="bg-orange1-500 text-center bg-opacity-80 md:absolute bottom-0 py-10">
@@ -41,22 +34,65 @@ export default function Home() {
                     principles, not power.
                 </h2>
             </div>
-            <div className="max-w-screen-lg w-full text-2xl bg-green-500 p-20">
-                <p>Dr. Curt Voight is a seasoned educator, leader, and community advocate with over three decades of
-                    experience in various roles within the education sector, including coach, teacher, administrator,
-                    principal, and professor. Throughout his career, Dr. Voight has been instrumental in shaping the
-                    educational landscape of South Dakota, demonstrating a steadfast commitment to excellence both
-                    inside and outside the classroom. He has served as a consultant for Elk Mountain Virtual High
-                    School, contributed to the National Board of Love INC, and provided consultancy for the development
-                    of Distance Delivery Systems in K-12 Education. Additionally, Dr. Voight has participated in the
-                    Gates Leadership mentoring project and received an Executive Appointment from Gov. Janklow to the
-                    Educators’ Education Review Panel. His contributions have been recognized with commendations from
-                    the South Dakota Legislature, and he is a proud NRA Life Member. Beyond education, he is actively
-                    involved in community initiatives such as the Doty Fire Department, where he serves as Assistant
-                    Chief, and as a longstanding member of the Board of Directors of Breadroot Food Co-op. Driven by a
-                    passion for education, leadership, and community welfare, Dr. Voight continues to be a dedicated
-                    advocate for the people of South Dakota.
-                </p>
+            <div className="flex flex-wrap justify-between">
+                <Image className="w-full xl:w-1/2 opacity-90 object-cover" src={flag} alt=""/>
+                <div
+                    className="self-center mx-auto max-w-screen-lg xl:w-5/12 text-xl xl:text-2xl bg-green-500 p-6 xl:p-26">
+                    <p className="mb-6">Dr. Curt Voight is a seasoned educator, leader, and community advocate with over
+                        three decades of
+                        experience in various roles within the education sector, including coach, teacher,
+                        administrator,
+                        principal, and professor. Throughout his career, Dr. Voight has been instrumental in shaping the
+                        educational landscape of South Dakota, demonstrating a steadfast commitment to excellence both
+                        inside and outside the classroom. He has served as a consultant for Elk Mountain Virtual High
+                        School, contributed to the National Board of Love INC, and provided consultancy for the
+                        development
+                        of Distance Delivery Systems in K-12 Education. Additionally, Dr. Voight has participated in the
+                        Gates Leadership mentoring project and received an Executive Appointment from Gov. Janklow to
+                        the
+                        Educators’ Education Review Panel. His contributions have been recognized with commendations
+                        from
+                        the South Dakota Legislature, and he is a proud NRA Life Member. Beyond education, he is
+                        actively
+                        involved in community initiatives such as the Doty Fire Department, where he serves as Assistant
+                        Chief, and as a longstanding member of the Board of Directors of Breadroot Food Co-op. Driven by
+                        a
+                        passion for education, leadership, and community welfare, Dr. Voight continues to be a dedicated
+                        advocate for the people of South Dakota.
+                    </p>
+                    <p>
+                        A devout Christian, Curt has been married to his beloved wife Jan for XXX years. Together, they
+                        have
+                        raised three children and are proud grandparents to five grandchildren. With this strong
+                        foundation
+                        of faith and family, Curt is deeply committed to securing a bright future for the next
+                        generation.
+                    </p>
+                </div>
+            </div>
+            <div className="bg-orange2-500 w-full" id="issues">
+                <div className="flex flex-col justify-around max-w-screen-2xl mx-auto">
+                    <h2 className="font-body text-5xl mb-6 mt-8 uppercase">On the Issues
+                    </h2>
+                    <div className="flex flex-wrap">
+                        <p className="text-2xl p-3">
+                            Protection of God-Given and Constitutional Rights
+                        </p>
+                        <p className="text-2xl p-3">
+                            Safeguarding Children and Family Values
+                        </p>
+                        <p className="text-2xl p-3">
+                            Education Reform and School Choice
+                        </p>
+                        <p className="text-2xl p-3">
+                            Property Tax Relief for Long-Term Homeowners
+                        </p>
+                        <p className="text-2xl p-3">
+                            Protection of Second Amendment Rights
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </main>
     );
