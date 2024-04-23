@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import Footer from "@/app/components/Footer";
+import Nav from "@/app/components/Nav";
 
 export const metadata: Metadata = {
   title: "Vote Voight",
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${glacialIndifference.variable} ${sportsWorld.variable}`}>
       <body>
+      <Nav/>
       {children}
       <Footer/>
       </body>

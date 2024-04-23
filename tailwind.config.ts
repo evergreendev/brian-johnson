@@ -14,7 +14,8 @@ const config: Config = {
       },
       colors: {
         green: {
-          500: "#26352E"
+          500: "#26352E",
+          600: "#1f2c26"
         },
         orange1: {
           500: "#F25F40"
@@ -27,6 +28,7 @@ const config: Config = {
         }
       },
       backgroundImage: {
+        "flag": "url('../public/american-flag.jpg')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
