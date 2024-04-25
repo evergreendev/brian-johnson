@@ -21,7 +21,7 @@ export default function Home() {
 
                     <p className="text-4xl mb-6">Absentee and Early Voting Began: <span
                         className="font-bold">April 19, 2024</span></p>
-                    <p className="text-4xl">Election day: <span className="font-bold">June 4, 2024</span></p>
+                    <p className="text-4xl">Election Day: <span className="font-bold">June 4, 2024</span></p>
                 </div>
             </div>
             <div className="bg-orange2-500 w-full flex justify-around">
