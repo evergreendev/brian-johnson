@@ -19,10 +19,8 @@ export default function Home() {
             <div className="bg-green-500 w-full flex justify-around">
                 <div className="max-w-screen-lg py-10 text-center px-2">
 
-                    <p className="text-4xl mb-6">Absentee voting began: <span
+                    <p className="text-4xl mb-6">Absentee and Early Voting Began: <span
                         className="font-bold">April 19, 2024</span></p>
-                    <p className="text-4xl mb-6">Early voting begins: <span className="font-bold">May 26, 2024</span>
-                    </p>
                     <p className="text-4xl">Election day: <span className="font-bold">June 4, 2024</span></p>
                 </div>
             </div>
