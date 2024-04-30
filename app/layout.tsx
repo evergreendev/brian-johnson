@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Footer from "@/app/components/Footer";
 import Nav from "@/app/components/Nav";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: "Vote Voight",
@@ -28,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${glacialIndifference.variable} ${sportsWorld.variable}`}>
+    <GoogleAnalytics gaId="G-8GQ8EYPGLH"/>
       <body>
       <Nav/>
       {children}
