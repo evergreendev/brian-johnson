@@ -17,7 +17,7 @@ const Nav = () => {
             <div
                 className="z-10 py-2 px-6 text-cream-500 font-body w-full max-w-screen-xl mx-auto items-center justify-between text-xl lg:flex ">
                 <Link href="/">
-                    <Image className="w-32" src={logo} alt="Brian Johnson for Area 6 School Board"/>
+                    <Image className="w-48" src={logo} alt="Brian Johnson for Area 6 School Board"/>
                 </Link>
                 <div className="space-x-8">
                     <Link className="hover:text-red-500" href="/#about">About</Link>
