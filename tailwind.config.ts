@@ -10,18 +10,15 @@ const config: Config = {
     extend: {
       fontFamily: {
         body: ['var(--font-glacial-indifference)'],
-        header: ['var(--font-sports-world)']
+        header: ['var(--font-garamond)']
       },
       colors: {
-        green: {
-          500: "#26352E",
-          600: "#1f2c26"
+        blue: {
+          500: "#151547",
+          600: "#0d0d39"
         },
-        orange1: {
-          500: "#F25F40"
-        },
-        orange2: {
-          500: "#EE6D45"
+        red: {
+          500: "#e82529"
         },
         cream: {
           500: "#FBF6DE"

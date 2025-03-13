@@ -2,7 +2,7 @@
 export default function donate() {
     return <div>
         <div className="min-h-screen pt-8 bg-slate-700">
-            <h2 className="text-center text-6xl bg-orange1-500 p-3 text-cream-500 bold font-body mb-12">Thank You for
+            <h2 className="text-center text-6xl bg-red-500 p-3 text-cream-500 bold font-body mb-12">Thank You for
                 Your Support</h2>
             <iframe className="min-h-[70vh] w-96 m-auto shadow-lg"
                     src="https://secure.anedot.com/curt-voight-for-district-33-senate/d4959f2e-f454-4a7a-b0c3-16547fef073f?embed=true"

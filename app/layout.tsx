@@ -6,9 +6,18 @@ import Nav from "@/app/components/Nav";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
-  title: "Vote Voight",
-  description: "Curt Voight for Senate 33",
+  title: "Brian Johnson for Area 6 School Board",
+  description: "Restore excellence in our schools, craft a solid educational foundation that will endure for generations, and create a school system that prepares every child for success.",
 };
+
+
+import {EB_Garamond} from 'next/font/google';
+
+const ebGaramond = EB_Garamond({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-garamond",
+})
 
 const glacialIndifference = localFont({
   src: "./fonts/GlacialIndifference-Bold.woff2",
@@ -28,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${glacialIndifference.variable} ${sportsWorld.variable}`}>
+    <html lang="en" className={`${glacialIndifference.variable} ${sportsWorld.variable} ${ebGaramond.variable}`}>
     <GoogleAnalytics gaId="G-8GQ8EYPGLH"/>
       <body>
       <Nav/>
