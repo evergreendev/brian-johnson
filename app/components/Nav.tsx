@@ -21,7 +21,7 @@ const Nav = () => {
                 </Link>
                 <div className="space-x-8">
                     <Link className="hover:text-red-500" href="/#about">About</Link>
-                    <Link className="hover:text-red-500" href="/#issues">Issues</Link>
+                    <Link className="hover:text-red-500" href="/#priorities">Priorities</Link>
                     <Link href="/"
                           className="rounded hover:bg-red-500 text-cream-500 border-2 p-3 py-1 bg-red-500 border-red-500">Donate</Link>
                 </div>

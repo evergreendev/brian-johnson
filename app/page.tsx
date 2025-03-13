@@ -20,7 +20,7 @@ export default function Home() {
             <div className="bg-blue-500 w-full flex justify-around">
                 <div className="max-w-screen-lg py-10 text-center px-2">
 
-                    <p className="text-4xl mb-6">Absentee and Early Voting Began: <span
+                    <p className="text-4xl mb-6">Absentee and Early Voting Begins: <span
                         className="font-bold">May 19, 2025</span></p>
                     <p className="text-4xl">Election Day: <span className="font-bold">June 3, 2025</span></p>
                 </div>
@@ -61,7 +61,7 @@ export default function Home() {
 
                 </div>
             </div>
-            <div className="bg-red-500 w-full " id="issues">
+            <div className="bg-red-500 w-full " id="priorities">
                 <div className="flex flex-col max-w-screen-lg justify-around mx-auto p-3">
                     <h2 className="font-body text-5xl mb-6 mt-8 uppercase">Priorities
                     </h2>
