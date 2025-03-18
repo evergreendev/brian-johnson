@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center justify-between text-cream-500 bg-blue-500">
             <div className="flex w-full flex-col relative">
-                <Image className="bg-slate-500 w-full" src={brianFamily} alt=""/>
+                <Image className="bg-slate-500 w-full" src={family} alt=""/>
                 <div className="bg-red-500 text-center bg-opacity-80 md:absolute bottom-0 py-10">
                     <h1 className="font-header px-6 text-4xl lg:text-8xl text-blue-500 mb-3 font-bold">Brian
                         Johnson </h1>
@@ -33,7 +33,6 @@ export default function Home() {
             <div className="flex flex-wrap justify-between w-full max-w-screen-2xl" id="about">
                 <div className="bg-center w-full xl:w-6/12 flex flex-col bg-cover">
                     <Image src={family2} alt="" className="m-auto shadow-sm opacity-95 shadow-gray-200"/>
-                    <Image src={family} alt="" className="m-auto shadow-sm opacity-95 shadow-gray-200"/>
                 </div>
                 <div
                     className="self-center mx-auto max-w-prose xl:w-5/12 text-xl xl:text-2xl bg-blue-500 p-6 xl:p-26">
