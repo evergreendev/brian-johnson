@@ -27,7 +27,7 @@ export default function Home() {
             </div>
             <div className="bg-blue-600 w-full flex justify-around ">
                 <div className="max-w-screen-lg py-10 text-center px-2">
-                    <Link className="bg-orange1-500 text-white p-2 rounded text-4xl font-bold" href="/RCArea6.pdf">View Area 6 Map</Link>
+                    <Link className="bg-red-500 text-white p-2 rounded text-4xl font-bold" href="/RCArea6.pdf">View Area 6 Map</Link>
                 </div>
             </div>
             <div className="bg-red-500 w-full flex justify-around">
