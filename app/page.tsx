@@ -25,6 +25,11 @@ export default function Home() {
                     <p className="text-4xl">Election Day: <span className="font-bold">June 3, 2025</span></p>
                 </div>
             </div>
+            <div className="bg-blue-600 w-full flex justify-around ">
+                <div className="max-w-screen-lg py-10 text-center px-2">
+                    <Link className="bg-orange1-500 text-white p-2 rounded text-4xl font-bold" href="/RCArea6.pdf">View Area 6 Map</Link>
+                </div>
+            </div>
             <div className="bg-red-500 w-full flex justify-around">
                 <h2 className="font-body text-5xl p-2 py-10 text-center">
                     <p className="font-bold text-4xl">Smart Foundations, Strong Futures:</p> Strengthening schools today for student success tomorrow.
