@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import brianFamily from "@/public/brian-family.jpg";
 import family from "@/public/family-2.jpg";
@@ -5,6 +6,7 @@ import family2 from "@/public/family.jpg";
 import Link from "next/link";
 
 export default function Home() {
+
     return (
         <main className="flex flex-col items-center justify-between text-cream-500 bg-blue-500">
             <div className="flex w-full flex-col relative">
@@ -65,6 +67,44 @@ export default function Home() {
 
                 </div>
             </div>
+
+            <div className="bg-blue-500 w-full" id="videos">
+                <div className="max-w-screen-2xl mx-auto py-10 px-4">
+                    <h2 className="font-body text-5xl mb-8 text-center text-cream-500 uppercase">Campaign Videos</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
+                            <video 
+                                className="w-full aspect-video" 
+                                controls
+                            >
+                                <source src="/media/Brian%20Johnson%20WEB_2.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
+                            <video 
+                                className="w-full aspect-video" 
+                                controls
+                            >
+                                <source src="/media/Brian%20Johnson%20WEB_3.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
+                            <video 
+                                className="w-full aspect-video" 
+                                controls
+                            >
+                                <source src="/media/Brian%20Johnson%20WEB_4.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className="bg-red-500 w-full " id="priorities">
                 <div className="flex flex-col max-w-screen-lg justify-around mx-auto p-3">
                     <h2 className="font-body text-5xl mb-6 mt-8 uppercase">Priorities
