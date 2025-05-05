@@ -3,7 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Footer from "@/app/components/Footer";
 import Nav from "@/app/components/Nav";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: "Brian Johnson for Area 6 School Board",
@@ -38,6 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${glacialIndifference.variable} ${sportsWorld.variable} ${ebGaramond.variable}`}>
+    <GoogleTagManager gtmId="GTM-K693WR2J" />
     <GoogleAnalytics gaId="G-W1NFQ74DWP"/>
       <body>
       <Nav/>
