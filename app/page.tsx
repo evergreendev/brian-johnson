@@ -45,13 +45,12 @@ export default function Home() {
         // Cleanup
         return () => window.removeEventListener('resize', updateVideoWidth);
     }, []);
-    function getTranslateX(idx: number, w = 716) {
-        const LEFT_MARGIN = 90;                // how much the first slide peeks out
-        const STEP_RATIO  = 540 / 716;         // slide‑to‑slide shift relative to width
-                                               //   540 px is the gap you want
-        const step = -STEP_RATIO * w;          // negative because we move the track left
+    function getTranslateX(idx: number, w: number) {
+        const LEFT_MARGIN = 0;                // how much the first slide peeks out// slide‑to‑slide shift relative to width
+        //   540 px is the gap you want
+        const step =  w;          // negative because we move the track left
 
-        return LEFT_MARGIN + step * idx;
+        return -(LEFT_MARGIN + step * idx);
     }
     // Function to pause the currently active video
     const pauseActiveVideo = () => {
@@ -77,7 +76,7 @@ export default function Home() {
     };
 
     return (
-        <main className="flex flex-col items-center justify-between text-cream-500 bg-blue-500">
+        <main className="flex flex-col items-center justify-between text-cream-500 bg-blue-500 overflow-x-hidden">
             <div className="flex w-full flex-col relative">
                 <Image className="bg-slate-500 w-full" src={family} alt=""/>
                 <div className="bg-red-500 text-center bg-opacity-80 md:absolute bottom-0 py-10">
@@ -160,7 +159,7 @@ export default function Home() {
                         </button>
 
                         {/* Carousel Container */}
-                        <div className="overflow-hidden" ref={containerRef}>
+                        <div className="overflow-visible" ref={containerRef}>
                             <div className="flex transition-transform duration-300 ease-in-out relative"
                                  style={{
                                     transform: `translateX(${getTranslateX(activeIndex, videoWidth)}px)`
@@ -184,6 +183,10 @@ export default function Home() {
                                         >
                                             <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
                                                 <video
+                                                    onClick={() => {
+                                                        pauseActiveVideo();
+                                                        setActiveIndex(index);
+                                                    }}
                                                     className="w-full aspect-video"
                                                     controls={normalizedPosition === 0}
                                                     preload="metadata"
