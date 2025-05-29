@@ -4,8 +4,77 @@ import brianFamily from "@/public/brian-family.jpg";
 import family from "@/public/family-2.jpg";
 import family2 from "@/public/family.jpg";
 import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Home() {
+    const videoSources = [
+        "/media/Brian%20Johnson%20WEB_1.mp4",
+        "/media/Brian%20Johnson%20WEB_2.mp4",
+        "/media/Brian%20Johnson%20WEB_3.mp4",
+        "/media/Brian%20Johnson%20WEB_4.mp4"
+    ];
+
+    const [activeIndex, setActiveIndex] = useState(0);
+    const videoRefs = useRef([]);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [videoWidth, setVideoWidth] = useState(0);
+
+    // Initialize video refs
+    useEffect(() => {
+        videoRefs.current = videoRefs.current.slice(0, videoSources.length);
+    }, [videoSources.length]);
+
+    // Calculate video width
+    useEffect(() => {
+        const updateVideoWidth = () => {
+            if (containerRef.current) {
+                // Get the container width and calculate the video width (80% of container)
+                const containerWidth = containerRef.current.clientWidth;
+                const calculatedVideoWidth = containerWidth * 0.8; // 80% as per the w-[80%] class
+                setVideoWidth(calculatedVideoWidth);
+            }
+        };
+
+        // Calculate initially
+        updateVideoWidth();
+
+        // Recalculate on window resize
+        window.addEventListener('resize', updateVideoWidth);
+
+        // Cleanup
+        return () => window.removeEventListener('resize', updateVideoWidth);
+    }, []);
+    function getTranslateX(idx: number, w = 716) {
+        const LEFT_MARGIN = 90;                // how much the first slide peeks out
+        const STEP_RATIO  = 540 / 716;         // slide‑to‑slide shift relative to width
+                                               //   540 px is the gap you want
+        const step = -STEP_RATIO * w;          // negative because we move the track left
+
+        return LEFT_MARGIN + step * idx;
+    }
+    // Function to pause the currently active video
+    const pauseActiveVideo = () => {
+        // @ts-ignore
+        if (videoRefs.current[activeIndex] && videoRefs.current[activeIndex].pause) {
+            // @ts-ignore
+            videoRefs.current[activeIndex].pause();
+        }
+    };
+
+    const handlePrev = () => {
+        pauseActiveVideo();
+        setActiveIndex((prevIndex) =>
+            prevIndex === 0 ? videoSources.length - 1 : prevIndex - 1
+        );
+    };
+
+    const handleNext = () => {
+        pauseActiveVideo();
+        setActiveIndex((prevIndex) =>
+            prevIndex === videoSources.length - 1 ? 0 : prevIndex + 1
+        );
+    };
 
     return (
         <main className="flex flex-col items-center justify-between text-cream-500 bg-blue-500">
@@ -71,44 +140,81 @@ export default function Home() {
             <div className="bg-blue-500 w-full" id="videos">
                 <div className="max-w-screen-2xl mx-auto py-10 px-4">
                     <h2 className="font-body text-5xl mb-8 text-center text-cream-500 uppercase">Campaign Videos</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
-                            <video
-                                className="w-full aspect-video"
-                                controls
-                            >
-                                <source src="/media/Brian%20Johnson%20WEB_1.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
-                            <video 
-                                className="w-full aspect-video" 
-                                controls
-                            >
-                                <source src="/media/Brian%20Johnson%20WEB_2.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+
+                    <div className="relative mx-auto max-w-4xl">
+                        {/* Navigation Arrows */}
+                        <button
+                            onClick={handlePrev}
+                            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 bg-red-500 text-white p-2 md:p-3 rounded-full shadow-lg hover:bg-red-600 transition-colors"
+                            aria-label="Previous video"
+                        >
+                            <FaChevronLeft size={20} className="md:w-6 md:h-6" />
+                        </button>
+
+                        <button
+                            onClick={handleNext}
+                            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 bg-red-500 text-white p-2 md:p-3 rounded-full shadow-lg hover:bg-red-600 transition-colors"
+                            aria-label="Next video"
+                        >
+                            <FaChevronRight size={20} className="md:w-6 md:h-6" />
+                        </button>
+
+                        {/* Carousel Container */}
+                        <div className="overflow-hidden" ref={containerRef}>
+                            <div className="flex transition-transform duration-300 ease-in-out relative"
+                                 style={{
+                                    transform: `translateX(${getTranslateX(activeIndex, videoWidth)}px)`
+                                 }}>
+
+                                {videoSources.map((src, index) => {
+
+                                    // Calculate the position relative to active index
+                                    const position = (index - activeIndex) % videoSources.length;
+                                    // Ensure position is between -2 and 2
+                                    const normalizedPosition = ((position + videoSources.length) % videoSources.length) -
+                                                              (position > 2 ? videoSources.length : 0);
+
+                                    return (
+                                        <div
+                                            key={index}
+                                            className={`flex-shrink-0 w-full transition-all duration-300 ease-in-out
+                                                ${activeIndex === index ? 'opacity-100' : 'opacity-50'}
+                                                ${activeIndex === index ? 'w-[80%] scale-100 z-20' : 
+                                                   Math.abs(activeIndex - index) >= 1 ? 'w-[80%] scale-90 z-10 mx-[-10%]' : 'hidden'}`}
+                                        >
+                                            <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
+                                                <video
+                                                    className="w-full aspect-video"
+                                                    controls={normalizedPosition === 0}
+                                                    preload="metadata"
+                                                    // @ts-ignore
+                                                    ref={el => videoRefs.current[index] = el}
+                                                >
+                                                    <source src={src} type="video/mp4" />
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
 
-                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
-                            <video 
-                                className="w-full aspect-video" 
-                                controls
-                            >
-                                <source src="/media/Brian%20Johnson%20WEB_3.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-
-                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
-                            <video 
-                                className="w-full aspect-video" 
-                                controls
-                            >
-                                <source src="/media/Brian%20Johnson%20WEB_4.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                        {/* Indicators */}
+                        <div className="flex justify-center mt-4">
+                            {videoSources.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => {
+                                        pauseActiveVideo();
+                                        setActiveIndex(index);
+                                    }}
+                                    className={`h-3 w-3 mx-1 rounded-full ${
+                                        index === activeIndex ? 'bg-red-500' : 'bg-cream-500 opacity-50'
+                                    }`}
+                                    aria-label={`Go to video ${index + 1}`}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
