@@ -73,6 +73,15 @@ export default function Home() {
                     <h2 className="font-body text-5xl mb-8 text-center text-cream-500 uppercase">Campaign Videos</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
+                            <video
+                                className="w-full aspect-video"
+                                controls
+                            >
+                                <source src="/media/Brian%20Johnson%20WEB_1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div className="bg-blue-600 rounded-lg overflow-hidden shadow-lg">
                             <video 
                                 className="w-full aspect-video" 
                                 controls
